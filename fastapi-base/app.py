@@ -29,5 +29,6 @@ class App:
                 if os.path.exists(samples_path + filename):
                     with open(samples_path + filename, 'r') as sample_file:
                         sample_code =  sample_file.read()
+                        sample_code = sample_code.format(app_name=self.name)
                         file.write(sample_code)
                 print(f'[+] File {file.name} created!')
