@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='fastapi-base',
     version='0.1',
-    packages=find_packages(),
+    packages=find_packages(include=['fastapi_base', 'fastapi_base.*', 'samples', 'samples.*']),
     entry_points={
         'console_scripts': [
             'fastapi-base = fastapi_base.main:main',

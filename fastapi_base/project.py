@@ -19,7 +19,6 @@ class Project:
 
         self.create_dirs()
         self.create_base_files()
-        exit()
         self.create_venv()
         self.install_base_libs()
         self.init_alembic()
@@ -51,10 +50,6 @@ class Project:
         for filename in base_files:
             filename_full = self.root_path + filename
             with open(filename_full, 'w') as file:
-                print(
-                   os.path.exists(samples_path + filename),
-                   samples_path + filename 
-                )
                 if os.path.exists(samples_path + filename):
                     with open(samples_path + filename, 'r') as sample_file:
                         sample_code =  sample_file.read()
