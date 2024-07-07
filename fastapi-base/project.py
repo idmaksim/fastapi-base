@@ -1,5 +1,7 @@
 import os
+import venv
 import sysconfig
+import subprocess
 
 
 class Project:
@@ -57,11 +59,11 @@ class Project:
 
     # TODO: fix venv activation
     def activate_venv(self) -> None:
-        activation_path = '.\\' + self.root_path + '.venv\\Scripts\\activate'
-        os.system(activation_path)
-        print('[+] Venv succesfully activated!')
-        os.system('pip freeze') # TODO: remove this
-        # self.init_alembic(self.root_path)
+        activation_path = '.\\' + self.root_path + '.venv\\Scripts\\activate.bat'
+        subprocess.call(f'cmd.exe /K {activation_path}')
+        print('[+] Venv successfully activated!')
+        subprocess.call('pip list', shell=True)
+
 
     # TODO: write the installing process of all needed libs
     def install_base_libs(self):
