@@ -19,3 +19,4 @@ def get_parsed_args() -> tuple[argparse.Namespace, argparse.ArgumentParser]:
 
     args = args_parser.parse_args()
     return args, args_parser
+

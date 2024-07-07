@@ -2,7 +2,7 @@ import os
 import venv
 import subprocess
 import sys
-
+import pkg_resources
 
 class Project:
     def __init__(self, name: str) -> None:
@@ -42,18 +42,13 @@ class Project:
             ".gitignore",
             "src/settings.py",
             "src/exceptions.py",
-            "src/abstract_repository.py",
             "README.md",
         )
         
-        samples_path = 'fastapi_base/samples/project/'
+        
         for filename in base_files:
             filename_full = self.root_path + filename
             with open(filename_full, 'w') as file:
-                if os.path.exists(samples_path + filename):
-                    with open(samples_path + filename, 'r') as sample_file:
-                        sample_code =  sample_file.read()
-                        file.write(sample_code)
                 print(f'[+] File {file.name} created!')
 
     def init_alembic(self) -> None:

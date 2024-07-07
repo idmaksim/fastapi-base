@@ -21,13 +21,8 @@ class App:
             'service.py',
             'utils.py'
         )
-        samples_path = 'fastapi_base/samples/app/'
+
         for filename in files:
             filename_full = self.root_path + filename
             with open(filename_full, 'w') as file:
-                if os.path.exists(samples_path + filename):
-                    with open(samples_path + filename, 'r') as sample_file:
-                        sample_code =  sample_file.read()
-                        sample_code = sample_code.format(app_name=self.name)
-                        file.write(sample_code)
                 print(f'[+] File {file.name} created!')
