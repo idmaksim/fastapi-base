@@ -6,7 +6,7 @@ setup(
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'fastapi-base = fastapi-base.main:main',
+            'fastapi-base = fastapi_base.main:main',
         ],
     },
     install_requires=[

@@ -21,7 +21,7 @@ class App:
             'service.py',
             'utils.py'
         )
-        samples_path = 'fastapi-base/samples/app/'
+        samples_path = 'fastapi_base/samples/app/'
         for filename in files:
             filename_full = self.root_path + filename
             with open(filename_full, 'w') as file:
