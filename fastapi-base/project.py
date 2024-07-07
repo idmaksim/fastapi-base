@@ -1,7 +1,7 @@
 import os
 import venv
-import sysconfig
 import subprocess
+import sys
 
 
 class Project:
@@ -10,14 +10,18 @@ class Project:
             raise Exception("Directory already exists")
         
         self.name = name
-        self.root_path = f"{self.name}\\"
-        self.is_windows = sysconfig.get_platform().startswith('win')
+        self.root_path = os.path.join(self.name)
+        self.is_windows = sys.platform.startswith('win')
+        self.venv_path = os.path.join(self.root_path, '.venv')
+        self.venv_python = os.path.join(self.venv_path, 'Scripts', 'python.exe') if self.is_windows else os.path.join(self.venv_path, 'bin', 'python')
+
         os.mkdir(self.name)
 
         self.create_dirs()
         self.create_base_files()
         self.create_venv()
-        self.activate_venv()
+        self.install_base_libs()
+        self.init_alembic()
 
     def create_dirs(self) -> None:
         dirs = (
@@ -25,57 +29,45 @@ class Project:
             "tests",
         )
         for directory in dirs:
-            os.mkdir(self.root_path + directory)
+            os.mkdir(os.path.join(self.root_path, directory))
             print(f"[+] Directory {directory} created!")
 
     def create_base_files(self) -> None:
         base_files = (
-            "src\\main.py",
-            "src\\database.py",
-            "src\\models_imports.py",
+            "src/main.py",
+            "src/database.py",
+            "src/models_imports.py",
             ".env",
             "Dockerfile",
             ".gitignore",
-            "settings.py",
-            "src\\exceptions.py",
-            "src\\abstract_service.py",
-            "REAMDE.md",
+            "src/settings.py",
+            "src/exceptions.py",
+            "src/abstract_repository.py",
+            "README.md",
         )
         for base_file in base_files:
-            base_file = self.root_path + base_file
-
-            with open(base_file, "w") as file:
+            base_file_path = os.path.join(self.root_path, base_file)
+            with open(base_file_path, "w") as file:
                 print(f"[+] File {file.name} created!")
 
     def init_alembic(self) -> None:
-        os.system(f'alembic init ./{self.root_path}')
+        os.chdir(self.root_path)  # Change directory to the project root
+        subprocess.check_call(['alembic', 'init', './alembic'])
+        os.chdir('..')  
 
     def create_venv(self) -> None:
-        python_cmd = 'python' if self.is_windows else 'python3'
+        print('[!] Creating virtual environment... Please, wait a few seconds')
+        venv.create(self.venv_path, with_pip=True)
+    
+        print('[+] Virtual environment successfully created!')
 
-        print('[!] Creating virtual enviroment... Please, wait a few seconds')
-        os.system(f'{python_cmd} -m venv {self.root_path}.venv')
-        print('[+] Virtual enviroment succesfully created!')
-
-    # TODO: fix venv activation
-    def activate_venv(self) -> None:
-        activation_path = '.\\' + self.root_path + '.venv\\Scripts\\activate.bat'
-        subprocess.call(f'cmd.exe /K {activation_path}')
-        print('[+] Venv successfully activated!')
-        subprocess.call('pip list', shell=True)
-
-
-    # TODO: write the installing process of all needed libs
     def install_base_libs(self):
         base_libs = (
             'fastapi[all]',
-            'sqlalchemy[postgres]',
+            'sqlalchemy',
             'asyncpg',
-            'alembic'
+            'alembic',
         )
-
-        raise NotImplementedError
-
-
-    
-    
+        for lib in base_libs:
+            subprocess.check_call([self.venv_python, '-m', 'pip', 'install', lib])
+        print('[+] Base libraries successfully installed!')

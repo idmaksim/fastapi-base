@@ -17,7 +17,6 @@ class App:
             'models.py',
             'dependencies.py',
             'config.py',
-            'constants.py', # this may be deleted
             'exceptions.py',
             'service.py',
             'utils.py'
