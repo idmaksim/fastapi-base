@@ -1,6 +1,6 @@
-from fastapi_base.utils import get_parsed_args
-from fastapi_base.app import App
-from fastapi_base.project import Project
+from utils import get_parsed_args
+from app import App
+from project import Project
 
 
 def main():

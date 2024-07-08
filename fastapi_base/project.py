@@ -3,6 +3,9 @@ import venv
 import subprocess
 import sys
 
+from utils import get_samples_path
+
+
 class Project:
     def __init__(self, name: str) -> None:
         if os.path.exists(name):
@@ -44,10 +47,16 @@ class Project:
             "README.md",
         )
         
-        
+        samples_path = os.path.join(get_samples_path(), 'project')
         for filename in base_files:
             filename_full = self.root_path + filename
             with open(filename_full, 'w') as file:
+
+                print(os.path.join(samples_path, filename))
+
+                if os.path.exists(os.path.join(samples_path, filename)):
+                    with open(os.path.join(samples_path, filename), 'r') as sample:
+                        file.write(sample.read())
                 print(f'[+] File {file.name} created!')
 
     def init_alembic(self) -> None:

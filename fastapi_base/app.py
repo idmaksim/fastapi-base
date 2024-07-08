@@ -1,5 +1,7 @@
 import os
+
 from utils import get_samples_path
+
 
 class App:
     def __init__(self, name: str) -> None:
