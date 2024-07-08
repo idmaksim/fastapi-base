@@ -2,7 +2,6 @@ import os
 import venv
 import subprocess
 import sys
-import pkg_resources
 
 class Project:
     def __init__(self, name: str) -> None:
