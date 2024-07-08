@@ -9,7 +9,6 @@ setup(
         ],
     },
     install_requires=[
-        # 'pkg_resources',
     ],
     author='Dementev Maksim',
     author_email='i@dmaksim.ru',

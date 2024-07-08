@@ -1,3 +1,8 @@
+"""
+This class is used to interact with the database.
+You can create your own or use it as a base class.
+"""
+
 from abc import ABC, abstractmethod
 
 from sqlalchemy import delete, insert, select, and_

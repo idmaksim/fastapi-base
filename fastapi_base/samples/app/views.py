@@ -1,12 +1,13 @@
 from fastapi import APIRouter
 from {app_name}.config import (
-    
+    PREFIX,
+    TAGS
 )
 
 
 router = APIRouter(
-    prefix='/{app_name}/',
-    tags=['{app_name}'.capitalize()]
+    prefix=PREFIX,
+    tags=TAGS
 )
 
 

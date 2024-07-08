@@ -45,16 +45,19 @@ class Project:
             ".gitignore",
             "src/settings.py",
             "src/exceptions.py",
+            'src/abstract_repository.py',
             "README.md",
+            'Dockerfile'
         )
         
         samples_path = os.path.join(get_samples_path(), 'project')
         for filename in base_files:
             filename_full = self.root_path + filename
             with open(filename_full, 'w') as file:
-
+                
+                print(os.path.exists(os.path.join(samples_path, filename)))
                 print(os.path.join(samples_path, filename))
-
+                
                 if os.path.exists(os.path.join(samples_path, filename)):
                     with open(os.path.join(samples_path, filename), 'r') as sample:
                         file.write(sample.read())
@@ -84,6 +87,4 @@ class Project:
         print('[+] Base libraries successfully installed!')
 
     def create_requirements_txt(self):
-        subprocess.check_call(
-            [self.venv_python, '-m', 'pip', 'freeze', '>', 'requirements.txt']
-        )
+        os.system(f'{self.venv_python} -m pip freeze > {self.root_path}/requirements.txt')

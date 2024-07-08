@@ -20,3 +20,8 @@ ALLOW_METHODS = ["*"]
 ALLOW_HEADERS = ["*"]
 ALLOW_CREDENTIALS = True
 
+
+# Database settings
+DATABASE_URL ='aio+sqlite:///db.sqlite3'
+
+
