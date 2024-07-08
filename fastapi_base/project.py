@@ -3,7 +3,7 @@ import venv
 import subprocess
 import sys
 
-from utils import get_samples_path
+from fastapi_base.utils import get_samples_path
 
 
 class Project:
@@ -60,9 +60,9 @@ class Project:
                 print(f'[+] File {file.name} created!')
 
     def init_alembic(self) -> None:
-        os.chdir(self.root_path)
-        subprocess.check_call(['alembic', 'init', './alembic'])
-        os.chdir('..')  
+        os.chdir(self.root_path)    
+        subprocess.check_call(['alembic', 'init', 'alembic'])
+        os.chdir('../')    
 
     def create_venv(self) -> None:
         print('[!] Creating virtual environment... Please, wait a few seconds')

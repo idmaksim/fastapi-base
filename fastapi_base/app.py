@@ -1,6 +1,6 @@
 import os
 
-from utils import get_samples_path
+from fastapi_base.utils import get_samples_path
 
 
 class App:
