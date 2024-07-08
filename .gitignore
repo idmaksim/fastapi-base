@@ -3,3 +3,4 @@ store
 build
 dist
 fastapi_base.egg-info
+__pycache__

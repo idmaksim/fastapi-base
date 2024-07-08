@@ -1,3 +1,4 @@
+import os
 import argparse
 
 
@@ -19,4 +20,10 @@ def get_parsed_args() -> tuple[argparse.Namespace, argparse.ArgumentParser]:
 
     args = args_parser.parse_args()
     return args, args_parser
+
+
+def get_samples_path() -> str:
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    samples_dir = os.path.join(current_dir, 'samples')
+    return samples_dir
 
