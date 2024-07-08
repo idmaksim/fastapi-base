@@ -4,7 +4,8 @@ This module is used to manage and connect to the database.
 
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 from sqlalchemy.orm import DeclarativeBase
-from settings import DATABASE_URL
+
+from src.settings import DATABASE_URL
 
 
 class Base(DeclarativeBase):

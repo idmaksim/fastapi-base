@@ -10,10 +10,10 @@ from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 
 # import from your apps routers
-# e.g. - from your_app.routers import my_router
+# e.g. - from src.your_app.routers import my_router
 
 # import base settings
-from settings import (
+from src.settings import (
     APP_VERSION,
     APP_TITLE,
     DEBUG,
@@ -51,3 +51,12 @@ app.add_middleware(
 routers = []
 for router in routers:
     app.include_router(router)
+
+
+
+# delete it if you using alembic
+import src.models_imports
+from src.database import create_db_and_tables
+
+
+create_db_and_tables()

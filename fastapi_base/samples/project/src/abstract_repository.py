@@ -4,9 +4,9 @@ You can create your own or use it as a base class.
 """
 
 from abc import ABC, abstractmethod
-
 from sqlalchemy import delete, insert, select, and_
-from database import async_session_maker
+
+from src.database import async_session_maker
 
 
 class AbstractRepository(ABC):

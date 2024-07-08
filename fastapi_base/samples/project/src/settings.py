@@ -11,7 +11,7 @@ DESCRIPTION = 'Your desc'
 DEBUG = True
 
 # url for openapi interactive docs
-DOCS_URL = "/docs",
+DOCS_URL = "/docs"
 REDOC_URL = "/redoc"
 
 # CORS settings
@@ -22,6 +22,6 @@ ALLOW_CREDENTIALS = True
 
 
 # Database settings
-DATABASE_URL ='aio+sqlite:///db.sqlite3'
+DATABASE_URL ='sqlite+aiosqlite:///db.sqlite3'
 
 
