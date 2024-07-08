@@ -23,6 +23,7 @@ class Project:
         self.create_base_files()
         self.create_venv()
         self.install_base_libs()
+        self.create_requirements_txt()
         self.init_alembic()
 
     def create_dirs(self) -> None:
@@ -75,7 +76,14 @@ class Project:
             'sqlalchemy',
             'asyncpg',
             'alembic',
+            'aiosqlite[sqlalchemy]',
+            'uvicorn',
         )
         for lib in base_libs:
             subprocess.check_call([self.venv_python, '-m', 'pip', 'install', lib])
         print('[+] Base libraries successfully installed!')
+
+    def create_requirements_txt(self):
+        subprocess.check_call(
+            [self.venv_python, '-m', 'pip', 'freeze', '>', 'requirements.txt']
+        )

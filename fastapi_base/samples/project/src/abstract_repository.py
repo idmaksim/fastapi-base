@@ -31,11 +31,11 @@ class SQLAlchemyRepository(AbstractRepository):
 
     async def add_one(self, data: dict):
         async with async_session_maker() as session:
-                stmt = insert(self.model).values(**data).returning(self.model)
-                res = await session.execute(statement=stmt)
-                await session.flush()
-                await session.commit()
-                return res.scalar_one()
+            stmt = insert(self.model).values(**data).returning(self.model)
+            res = await session.execute(statement=stmt)
+            await session.flush()
+            await session.commit()
+            return res.scalar_one()
 
     async def get_all(self, limit: int = 10):
         async with async_session_maker() as session:
@@ -52,7 +52,12 @@ class SQLAlchemyRepository(AbstractRepository):
     async def get_one_by_data(self, **filters):
         async with async_session_maker() as session:
             stmt = select(self.model).where(
-                and_(*[getattr(self.model, key) == value for key, value in filters.items()]))
+                and_(
+                    *[
+                        getattr(self.model, key) == value for key, value in filters.items()
+                    ]
+                )
+            )
             res = await session.execute(stmt)
             return res.scalar()
 
