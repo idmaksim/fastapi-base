@@ -3,6 +3,9 @@ import venv
 import subprocess
 import sys
 
+from fastapi_base.utils import get_samples_path
+
+
 class Project:
     def __init__(self, name: str) -> None:
         if os.path.exists(name):
@@ -20,6 +23,7 @@ class Project:
         self.create_base_files()
         self.create_venv()
         self.install_base_libs()
+        self.create_requirements_txt()
         self.init_alembic()
 
     def create_dirs(self) -> None:
@@ -41,19 +45,24 @@ class Project:
             ".gitignore",
             "src/settings.py",
             "src/exceptions.py",
+            'src/abstract_repository.py',
             "README.md",
+            'Dockerfile'
         )
         
-        
+        samples_path = os.path.join(get_samples_path(), 'project')
         for filename in base_files:
             filename_full = self.root_path + filename
             with open(filename_full, 'w') as file:
+                if os.path.exists(os.path.join(samples_path, filename)):
+                    with open(os.path.join(samples_path, filename), 'r') as sample:
+                        file.write(sample.read())
                 print(f'[+] File {file.name} created!')
 
     def init_alembic(self) -> None:
-        os.chdir(self.root_path)
-        subprocess.check_call(['alembic', 'init', './alembic'])
-        os.chdir('..')  
+        os.chdir(self.root_path)    
+        subprocess.check_call(['alembic', 'init', 'alembic'])
+        os.chdir('../')    
 
     def create_venv(self) -> None:
         print('[!] Creating virtual environment... Please, wait a few seconds')
@@ -66,7 +75,12 @@ class Project:
             'sqlalchemy',
             'asyncpg',
             'alembic',
+            'aiosqlite[sqlalchemy]',
+            'uvicorn',
         )
         for lib in base_libs:
             subprocess.check_call([self.venv_python, '-m', 'pip', 'install', lib])
         print('[+] Base libraries successfully installed!')
+
+    def create_requirements_txt(self):
+        os.system(f'{self.venv_python} -m pip freeze > {self.root_path}/requirements.txt')

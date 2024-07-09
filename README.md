@@ -8,6 +8,9 @@
 
 **FastAPI Base** is a utility for generating projects and apps in generated projects with simple structure
 
+## Updated
+- added **base code generating** in projects and apps
+
 ## Installation
 
 To install the utility, use `pip`:
@@ -43,6 +46,7 @@ fastapi-base startapp myapp
 
 - **Generating FastAPI projects**
 - **Generating FastAPI apps in generated projects**
+- **Generating base code**
 
 ## Requirements
 

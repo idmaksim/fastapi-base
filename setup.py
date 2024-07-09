@@ -2,14 +2,13 @@ from setuptools import setup
 
 setup(
     name='fastapi-base',
-    version='1.1',
+    version='2.0',
     entry_points={
         'console_scripts': [
             'fastapi-base = fastapi_base.main:main',
         ],
     },
     install_requires=[
-        # 'pkg_resources',
     ],
     author='Dementev Maksim',
     author_email='i@dmaksim.ru',
