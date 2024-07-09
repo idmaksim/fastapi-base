@@ -2,7 +2,7 @@
 {app_name} app service and repository
 """
 
-from src.abstract_repository import SQLAlchemyRepository
+from src.abstract_repository import SQLAlchemyRepository, AbstractRepository
 
 
 # define your service here and rename if it's necessary
@@ -15,5 +15,5 @@ class ItemRepository(SQLAlchemyRepository):
 
 
 class ItemService:
-    def __init__(self, repository: ItemRepository):
-        self.repository: ItemRepository = repository
+    def __init__(self, repository: AbstractRepository):
+        self.repository: AbstractRepository = repository()

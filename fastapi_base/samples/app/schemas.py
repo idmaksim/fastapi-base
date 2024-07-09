@@ -18,6 +18,10 @@ class ItemGet(ItemBase):
     ...
 
 
+class ItemUpdate(ItemBase):
+    ...
+
+
 class Item(ItemBase):
     id: int
 
