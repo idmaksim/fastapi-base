@@ -22,6 +22,5 @@ ALLOW_CREDENTIALS = True
 
 
 # Database settings
-DATABASE_URL ='sqlite+aiosqlite:///db.sqlite3'
-
-
+ASYNC_DATABASE_URL ='sqlite+aiosqlite:///db.sqlite3'
+SYNC_DATABASE_URL = 'sqlite:///db.sqlite3' # for alembic migrations

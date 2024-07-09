@@ -11,7 +11,7 @@ from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 
 # import from your apps routers
-# e.g. - from src.your_app.routers import my_router
+# e.g. - from src.your_app.views import my_router
 
 # import base settings
 from src.settings import (
@@ -28,7 +28,7 @@ from src.settings import (
 )
 
 # WARNING: delete it if you using alembic
-import src.models_imports
+import src.models_imports # noqa
 from src.database import create_db_and_tables
 
 @asynccontextmanager

@@ -6,15 +6,24 @@ from fastapi import HTTPException, status
 
 
 class BadRequestException(HTTPException):
-    status_code = status.HTTP_400_BAD_REQUEST
-    detail  = "Bad Request to"
+    def __init__(self, detail=None) -> None:
+        status_code = status.HTTP_400_BAD_REQUEST
+        if detail is None:
+            detail  = "Bad Request"
+        super().__init__(status_code, detail)
 
 
 class NotFoundException(HTTPException):
-    status_code = status.HTTP_404_NOT_FOUND
-    detail = "The requested resource was not found"
+    def __init__(self, detail=None) -> None:
+        status_code = status.HTTP_404_NOT_FOUND
+        if detail is None:
+            detail = "The requested resource was not found"
+        super().__init__(status_code, detail)
 
 
 class UnauthorizedException(HTTPException):
-    status_code = status.HTTP_401_UNAUTHORIZED
-    detail = "You are not authorized to access this resource"
+    def __init__(self, detail=None) -> None:
+        status_code = status.HTTP_401_UNAUTHORIZED
+        if detail is None:
+            detail = "You are not authorized to access this resource"
+        super().__init__(status_code, detail)

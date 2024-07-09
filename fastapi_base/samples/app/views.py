@@ -7,13 +7,15 @@ from fastapi import APIRouter, status
 
 from src.{app_name}.config import (
     PREFIX,
-    TAGS
+    TAGS,
+    INCLUDE_IN_SCHEMA
 )
 
 
 router = APIRouter(
     prefix=PREFIX,
-    tags=TAGS
+    tags=TAGS,
+    include_in_schema=INCLUDE_IN_SCHEMA
 )
 
 

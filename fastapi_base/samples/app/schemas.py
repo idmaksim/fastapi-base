@@ -9,11 +9,14 @@ from pydantic import BaseModel
 class ItemBase(BaseModel):
     ...
 
+
 class ItemCreate(ItemBase):
     ...
 
+
 class ItemGet(ItemBase):
     ...
+
 
 class Item(ItemBase):
     id: int
