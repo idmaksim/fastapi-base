@@ -1,3 +1,7 @@
+"""
+{app_name} schemas
+"""
+
 from pydantic import BaseModel
 
 

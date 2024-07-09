@@ -1,3 +1,7 @@
+"""
+{app_name} app service and repository
+"""
+
 from src.abstract_repository import SQLAlchemyRepository
 
 

@@ -1,4 +1,5 @@
 # delete any if you don't need it
+from contextlib import asynccontextmanager # delete if you using alembic
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -26,6 +27,16 @@ from src.settings import (
     ALLOW_ORIGINS,
 )
 
+# WARNING: delete it if you using alembic
+import src.models_imports
+from src.database import create_db_and_tables
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await create_db_and_tables()
+    yield
+
+
 # creating app with base settings
 app = FastAPI(
     title=APP_TITLE,
@@ -33,7 +44,8 @@ app = FastAPI(
     debug=DEBUG,
     description=DESCRIPTION,
     docs_url=DOCS_URL,
-    redoc_url=REDOC_URL
+    redoc_url=REDOC_URL,
+    lifespan=lifespan # WARNING: delete if you using alembic
 )
 
 # add middlewares
@@ -51,12 +63,3 @@ app.add_middleware(
 routers = []
 for router in routers:
     app.include_router(router)
-
-
-
-# delete it if you using alembic
-import src.models_imports
-from src.database import create_db_and_tables
-
-
-create_db_and_tables()

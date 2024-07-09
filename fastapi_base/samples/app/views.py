@@ -1,3 +1,8 @@
+"""
+Views controllers for {app_name} app
+"""
+
+
 from fastapi import APIRouter, status
 
 from src.{app_name}.config import (
