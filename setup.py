@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='fastapi-base',
-    version='2.0',
+    version='2.1',
     entry_points={
         'console_scripts': [
             'fastapi-base = fastapi_base.main:main',
