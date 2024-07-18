@@ -17,6 +17,15 @@ def get_parsed_args() -> tuple[argparse.Namespace, argparse.ArgumentParser]:
     parser_startapp.add_argument(
         "name", type=str, help="The name of the new FastAPI app"
     )
+    
+    parser_startcrudapp = subparsers.add_parser("startcrudapp", help="Create a new FastAPI CRUD app")
+    parser_startcrudapp.add_argument(
+        "name", type=str, help="The name of the new FastAPI crud app"
+    )
+    parser_startcrudapp.add_argument(
+        "json_path", type=str, help ="The name of the input json file with schema"
+    )
+    
 
     args = args_parser.parse_args()
     return args, args_parser

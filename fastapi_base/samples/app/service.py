@@ -5,25 +5,20 @@
 from sqlalchemy.exc import IntegrityError
 
 from src.abstract_repository import SQLAlchemyRepository, AbstractRepository
-from src.{app_name}.models import YourModel
+from src.{app_name}.models import {table_name}
 from src.exceptions import ConflictException, NotFoundException
-from src.{app_name}.schemas import YourModelUpdateSchema, YourModelCreateSchema
-
-# TODO: define your service here and rename if it's necessary
-# WARNING: if this sevice doesn't work with DB,
-# you may implement only your own service
-# TODO: rename YourModel to name of your model with press F2 button on class name
+from src.{app_name}.schemas import {table_name}CreateSchema
 
 
-class YourModelRepository(SQLAlchemyRepository):
-    model = YourModel
+class {table_name}Repository(SQLAlchemyRepository):
+    model = {table_name}
 
 
-class YourModelService:
+class {table_name}Service:
     def __init__(self, repository: AbstractRepository):
         self.repository: AbstractRepository = repository()
 
-    async def create(self, item: YourModelCreateSchema):
+    async def create(self, item: {table_name}CreateSchema):
         item_dict = item.model_dump()
         try:
             return await self.repository.create(item_dict)
@@ -40,7 +35,7 @@ class YourModelService:
             return item
         raise NotFoundException()
 
-    async def update(self, id: int, item: YourModelUpdateSchema):
+    async def update(self, id: int, item: {table_name}CreateSchema):
         item_dict = item.model_dump()
     
         if upd_item := await self.repository.update_by_id(id, item_dict):
