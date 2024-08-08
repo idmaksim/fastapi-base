@@ -11,15 +11,9 @@ from core.{app_name}.config import (
     INCLUDE_IN_SCHEMA
 )
 
-<<<<<<< HEAD
 from core.{app_name}.dependencies import get_{app_name}_service
 from core.{app_name}.service import YourModelService
 from core.{app_name}.schemas import YourModelCreateSchema, YourModelGetSchema, YourModelUpdateSchema
-=======
-from src.{app_name}.dependencies import get_{app_name}_service
-from src.{app_name}.service import {table_name}Service
-from src.{app_name}.schemas import {table_name}CreateSchema, {table_name}GetSchema
->>>>>>> ee1a26888708d55deb24fe098c9e68df619a526d
 
 
 router = APIRouter(
@@ -29,11 +23,7 @@ router = APIRouter(
 )
 
 
-<<<<<<< HEAD
 @router.get('/{{id}}', response_model=YourModelGetSchema, status_code=status.HTTP_200_OK)
-=======
-@router.get('/', response_model={table_name}GetSchema, status_code=status.HTTP_200_OK)
->>>>>>> ee1a26888708d55deb24fe098c9e68df619a526d
 async def get_one(
     id: int,
     service: {table_name}Service = Depends(get_{app_name}_service),
@@ -51,11 +41,7 @@ async def create_one(
     return new_item
 
 
-<<<<<<< HEAD
 @router.put('/{{id}}', response_model=YourModelGetSchema, status_code=status.HTTP_200_OK)
-=======
-@router.put('/', response_model={table_name}GetSchema, status_code=status.HTTP_200_OK)
->>>>>>> ee1a26888708d55deb24fe098c9e68df619a526d
 async def update_one(
     id: int,
     new_item: {table_name}CreateSchema,
