@@ -5,21 +5,12 @@
 from pydantic import BaseModel
 
 
-# define your schemas here and rename< which already exists
-# TODO: rename YourModel to name of your model with press F2 button on class name
+# define your schemas here 
 
 
-class YourModelBaseSchema(BaseModel):
+class {table_name}CreateSchema(BaseModel):
     ...
 
 
-class YourModelCreateSchema(YourModelBaseSchema):
-    ...
-
-
-class YourModelGetSchema(YourModelBaseSchema):
-    ...
-
-
-class YourModelUpdateSchema(YourModelBaseSchema):
+class {table_name}GetSchema({table_name}CreateSchema):
     ...

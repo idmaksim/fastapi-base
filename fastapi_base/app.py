@@ -19,7 +19,6 @@ class App:
             'models.py',
             'dependencies.py',
             'config.py',
-            'exceptions.py',
             'service.py',
             'utils.py'
         )
@@ -29,5 +28,5 @@ class App:
             with open(filename_full, 'w') as file:
                 if os.path.exists(os.path.join(samples_path, filename)):
                     with open(os.path.join(samples_path, filename), 'r') as sample:
-                        file.write(sample.read().format(app_name=self.name))
+                        file.write(sample.read().format(app_name=self.name, table_name=self.name.capitalize()))
                 print(f'[+] File {file.name} created!')
