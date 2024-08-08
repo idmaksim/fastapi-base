@@ -2,7 +2,7 @@
 FastAPI dependencies for the app {app_name}
 """
 
-from core.{app_name}.service import {table_name}RepositoryRepository, {table_name}ServiceService 
+from core.{app_name}.service import {table_name}Repository, {table_name}Service 
 
 # TODO: define your dependencies here
 def get_{app_name}_service():

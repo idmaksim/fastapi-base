@@ -12,8 +12,8 @@ from core.{app_name}.config import (
 )
 
 from core.{app_name}.dependencies import get_{app_name}_service
-from core.{app_name}.service import YourModelService
-from core.{app_name}.schemas import YourModelCreateSchema, YourModelGetSchema, YourModelUpdateSchema
+from core.{app_name}.service import {table_name}Service
+from core.{app_name}.schemas import {table_name}CreateSchema, {table_name}GetSchema, {table_name}UpdateSchema
 
 
 router = APIRouter(
@@ -23,7 +23,7 @@ router = APIRouter(
 )
 
 
-@router.get('/{{id}}', response_model=YourModelGetSchema, status_code=status.HTTP_200_OK)
+@router.get('/{{id}}', response_model={table_name}GetSchema, status_code=status.HTTP_200_OK)
 async def get_one(
     id: int,
     service: {table_name}Service = Depends(get_{app_name}_service),
@@ -41,7 +41,7 @@ async def create_one(
     return new_item
 
 
-@router.put('/{{id}}', response_model=YourModelGetSchema, status_code=status.HTTP_200_OK)
+@router.put('/{{id}}', response_model={table_name}GetSchema, status_code=status.HTTP_200_OK)
 async def update_one(
     id: int,
     new_item: {table_name}CreateSchema,
