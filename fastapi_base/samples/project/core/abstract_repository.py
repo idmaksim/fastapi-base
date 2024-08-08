@@ -6,7 +6,7 @@ You can create your own or use it as a base class.
 from abc import ABC, abstractmethod
 from sqlalchemy import delete, insert, select, and_, update
 
-from src.database import async_session_maker
+from core.database import async_session_maker
 
 
 class AbstractRepository(ABC):

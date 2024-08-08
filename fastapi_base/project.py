@@ -28,7 +28,7 @@ class Project:
 
     def create_dirs(self) -> None:
         dirs = (
-            "src",
+            "core",
             "tests",
         )
         for directory in dirs:
@@ -37,15 +37,15 @@ class Project:
 
     def create_base_files(self) -> None:
         base_files = (
-            "src/main.py",
-            "src/database.py",
-            "src/models_imports.py",
+            "core/main.py",
+            "core/database.py",
+            "core/models_imports.py",
             ".env",
             "Dockerfile",
             ".gitignore",
-            "src/settings.py",
-            "src/exceptions.py",
-            'src/abstract_repository.py',
+            "core/settings.py",
+            "core/exceptions.py",
+            'core/abstract_repository.py',
             "README.md",
             'Dockerfile'
         )

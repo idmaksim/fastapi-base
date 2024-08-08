@@ -4,10 +4,10 @@
 
 from sqlalchemy.exc import IntegrityError
 
-from src.abstract_repository import SQLAlchemyRepository, AbstractRepository
-from src.{app_name}.models import YourModel
-from src.exceptions import ConflictException, NotFoundException
-from src.{app_name}.schemas import YourModelUpdateSchema, YourModelCreateSchema
+from core.abstract_repository import SQLAlchemyRepository, AbstractRepository
+from core.{app_name}.models import YourModel
+from core.exceptions import ConflictException, NotFoundException
+from core.{app_name}.schemas import YourModelUpdateSchema, YourModelCreateSchema
 
 # TODO: define your service here and rename if it's necessary
 # WARNING: if this sevice doesn't work with DB,
