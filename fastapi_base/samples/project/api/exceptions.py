@@ -1,7 +1,3 @@
-"""
-Define your global custom exceptions in this file
-"""
-
 from fastapi import HTTPException, status
 
 

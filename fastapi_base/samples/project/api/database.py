@@ -1,11 +1,7 @@
-"""
-This module is used to manage and connect to the database.
-"""
-
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 from sqlalchemy.orm import DeclarativeBase
 
-from core.settings import ASYNC_DATABASE_URL
+from api.settings import ASYNC_DATABASE_URL
 
 
 class Base(DeclarativeBase):

@@ -19,3 +19,4 @@ class CRUDApp:
         schema_generator = SchemaGenerator()
         schema_generator.gen_from_json(SchemaGenerator.Model.Pydantic, self.json_path, os.path.join(self.name, 'schemas.py'))
         schema_generator.gen_from_json(SchemaGenerator.Model.SQLAlchemy, self.json_path, os.path.join(self.name, 'models.py'))
+        

@@ -12,6 +12,7 @@ class Project:
             raise Exception("Directory already exists")
         
         self.name = name
+        self.root_dir_name = 'api'
         self.root_path = self.name + '\\'
         self.is_windows = sys.platform.startswith('win')
         self.venv_path = os.path.join(self.root_path, '.venv')
@@ -28,7 +29,7 @@ class Project:
 
     def create_dirs(self) -> None:
         dirs = (
-            "core",
+            self.root_dir_name,
             "tests",
         )
         for directory in dirs:
@@ -37,23 +38,23 @@ class Project:
 
     def create_base_files(self) -> None:
         base_files = (
-            "core/main.py",
-            "core/database.py",
-            "core/models_imports.py",
-            ".env",
+            f"{self.root_dir_name}/main.py",
+            f"{self.root_dir_name}/database.py",
+            f"{self.root_dir_name}/models_imports.py",
+            f"{self.root_dir_name}/settings.py",
+            f"{self.root_dir_name}/exceptions.py",
+            f"{self.root_dir_name}/abstract_repository.py",
+             ".env",
             "Dockerfile",
             ".gitignore",
-            "core/settings.py",
-            "core/exceptions.py",
-            'core/abstract_repository.py',
             "README.md",
-            'Dockerfile'
         )
         
         samples_path = os.path.join(get_samples_path(), 'project')
         for filename in base_files:
             filename_full = self.root_path + filename
             with open(filename_full, 'w') as file:
+                print(os.path.join(samples_path, filename))
                 if os.path.exists(os.path.join(samples_path, filename)):
                     with open(os.path.join(samples_path, filename), 'r') as sample:
                         file.write(sample.read())

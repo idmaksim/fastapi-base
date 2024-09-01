@@ -1,18 +1,9 @@
-"""
-{app_name} app service and repository
-"""
-
 from sqlalchemy.exc import IntegrityError
 
-from core.abstract_repository import SQLAlchemyRepository, AbstractRepository
-from core.{app_name}.models import {table_name}
-from core.exceptions import ConflictException, NotFoundException
-from core.{app_name}.schemas import {table_name}CreateSchema
-
-# TODO: define your service here and rename if it's necessary
-# WARNING: if this sevice doesn't work with DB,
-# you may implement only your own service
-# TODO: rename YourModel to name of your model with press F2 button on class name
+from api.abstract_repository import SQLAlchemyRepository, AbstractRepository
+from api.{app_name}.models import {table_name}
+from api.exceptions import ConflictException, NotFoundException
+from api.{app_name}.schemas import {table_name}CreateSchema
 
 
 class {table_name}Repository(SQLAlchemyRepository):

@@ -1,12 +1,7 @@
-"""
-This class is used to interact with the database.
-You can create your own or use it as a base class.
-"""
-
 from abc import ABC, abstractmethod
 from sqlalchemy import delete, insert, select, and_, update
 
-from core.database import async_session_maker
+from api.database import async_session_maker
 
 
 class AbstractRepository(ABC):

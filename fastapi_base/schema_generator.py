@@ -55,7 +55,7 @@ class SchemaGenerator:
         sqlalchemy_imports: List[str] = [
             "from sqlalchemy import Column, Integer, Boolean, String, UUID, Float, ARRAY, DateTime",
             "from uuid import uuid4",
-            "from src.database import Base"
+            "from api.database import Base"
         ]
         
         with open(output_path, 'w') as file:
@@ -66,9 +66,18 @@ class SchemaGenerator:
             
             pydantic_is_id, pydantic_is_uuid = False, False
             
-            sup_class: str = "BaseModel" if model_type is self.Model.Pydantic else "Base" 
-            model_name = model['class_name'] if model_type is self.Model.SQLAlchemy else f"{model['class_name']}CreateSchema"
+            if model_type is self.Model.Pydantic:
+                sup_class: str = "BaseModel"  
+                model_name = f"{model['class_name']}CreateSchema"
+            elif model_type is self.Model.SQLAlchemy:
+                sup_class: str = "Base" 
+                model_name = model['class_name'] 
+
             file.write(f"class {model_name}({sup_class}):\n")
+            
+            if model_type is self.Model.SQLAlchemy:
+                file.write(f"\t__tablename__ = '{model_name.lower() + 's'}'\n\n")
+                
             for name, type in model["fields"]:
                 if name in model["required_fields"]:
                     is_id, is_uuid = False, False

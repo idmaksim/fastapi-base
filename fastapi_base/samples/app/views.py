@@ -1,19 +1,13 @@
-"""
-Views controllers for {app_name} app
-"""
-
-
 from fastapi import APIRouter, status, Depends
 
-from core.{app_name}.config import (
+from api.{app_name}.config import (
     PREFIX,
     TAGS,
     INCLUDE_IN_SCHEMA
 )
-
-from core.{app_name}.dependencies import get_{app_name}_service
-from core.{app_name}.service import {table_name}Service
-from core.{app_name}.schemas import {table_name}CreateSchema, {table_name}GetSchema, {table_name}UpdateSchema
+from api.{app_name}.dependencies import get_{app_name}_service
+from api.{app_name}.service import {table_name}Service
+from api.{app_name}.schemas import {table_name}CreateSchema, {table_name}GetSchema, {table_name}UpdateSchema
 
 
 router = APIRouter(

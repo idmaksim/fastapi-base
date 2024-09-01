@@ -20,7 +20,6 @@ class App:
             'dependencies.py',
             'config.py',
             'service.py',
-            'utils.py'
         )
         samples_path = os.path.join(get_samples_path(), 'app')
         for filename in files:
