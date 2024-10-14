@@ -59,6 +59,6 @@ This project is licensed under the **MIT License**.
 ## Authors
 
 - **Dementev Maksim** - *Developer* - [Github profile](https://github.com/idmaksim)
-- **Mulin Egor** - *Developer* - [Github profile](https://github.com/bopleromn)
+- **Mulin Egor** - *Developer* - [Github profile](https://github.com/MulinEgor)
 
 
